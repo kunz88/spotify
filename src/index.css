@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'CircularSpotify';
+    src: url('../assets/fonts/CircularSpotifyText-Medium.otf') format('otf');
+    font-family: 'CircularSpotifyBold';
+    src: url('../assets/fonts/CircularSpotifyText-Bold.otf') format('otf');
+    
+  }
+
+  body {
+    font-family: 'CircularSpotify' , sans-serif;
+    background : linear-gradient(rgba(0, 0, 0, 0.169) 0%, rgb(0, 0, 0) 100%);
+
+    
+  }

@@ -1,0 +1,32 @@
+//SERVE A CONVERTIRE I px IN rem
+$base: 16;
+
+@function rem($size) {
+  @return calc($size / $base) * 1rem;
+}
+
+@mixin flex(
+  $justify-content: initial,
+  $align-items: initial,
+  $flex-direction: row,
+  $flex-wrap: initial,
+  $display: flex
+) {
+  display: $display;
+
+  @if $justify-content != initial {
+    justify-content: $justify-content;
+  }
+
+  @if $align-items != initial {
+    align-items: $align-items;
+  }
+
+  @if $flex-direction != row {
+    flex-direction: $flex-direction;
+  }
+
+  @if $flex-wrap != initial {
+    flex-wrap: $flex-wrap;
+  }
+}
