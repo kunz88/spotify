@@ -1,0 +1,24 @@
+@import '../../scss/includes.scss';
+
+.section-component {
+  &:not(:first-child) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
+    padding-top: 10px;
+  }
+  .cards-container {
+  @include flex($flex-wrap: wrap);
+
+  gap: rem(26);
+}
+
+  .section-title {
+    margin-bottom: rem(8);
+    font-size: rem(24);
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}

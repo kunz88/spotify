@@ -1,0 +1,11 @@
+
+@import "../../scss/includes.scss";
+.nav-costum {
+    display: flex;
+    min-width: 75%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    backdrop-filter: blur(rem(2));
+    background: 333, 0.4;
+  }

@@ -1,0 +1,14 @@
+@import "../../scss/includes.scss";
+.bg-costum {
+  background-color: #181818;
+  border-radius: 8px;
+  transition: $transition;
+}
+
+:hover.bg-costum {
+  background-color: #333;
+  .btn{
+    z-index: 0;
+    transition: $transition;
+  }
+}

@@ -1,15 +1,16 @@
+import { Outlet } from "react-router-dom"
+import useSpotifyToken from "./hooks/useSpotifyToken"
+import NavBar from "./components/NavBar/NavBar"
 
 
 
 function App() {
+  useSpotifyToken()
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-      <button className='btn'>Hello</button>
-
+      <NavBar/>
+      <Outlet/>
     </>
   )
 }
