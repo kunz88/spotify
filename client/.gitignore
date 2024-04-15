@@ -1,4 +1,4 @@
-useSpotifyToken.ts
+hooks/useSpotifyToken.ts
 # Logs
 logs
 *.log
