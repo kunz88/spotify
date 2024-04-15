@@ -10,7 +10,7 @@ const CardListSection = ({title,children}:PropsWithChildren<Props>) => {
     return (
     <section className="section-component p-4">
         <h2 className="section-title font-bold text-white">{ title }</h2>
-        <div className="cards-container">{children}</div>
+        <section className="cards-container">{children}</section>
     </section>)
 }
 export default CardListSection

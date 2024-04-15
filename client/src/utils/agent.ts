@@ -6,10 +6,10 @@ import axios, { AxiosResponse } from "axios";
 axios.defaults.baseURL = 'http://localhost:3000';
 
 // opzione per ricezione di cookies
-axios.defaults.withCredentials = true;
+/* axios.defaults.withCredentials = true; da sistemare , da problemi con le api di spotify*/ 
 
 // funzione per simulare un ritardo nel loading delle pagine
-const sleep = () => new Promise(resolve => setTimeout(resolve , 500));
+const sleep = () => new Promise(resolve => setTimeout(resolve , 2000));
 
 
 axios.interceptors.response.use(async response => {
@@ -22,8 +22,6 @@ const responseBody = (response: AxiosResponse) => response.data;
 
 // oggetto che contiene tutti i metodi per effettuare una richiesta
 const request = {
-    
-    
     get: (url:string) => axios.get(url).then(responseBody),
     post: (url:string,body: object) => axios.post(url,body,{
         withCredentials: false 
@@ -34,15 +32,6 @@ const request = {
 
 }
 
-// oggetto che contiene Read per il catalogo di artist
-const Artists = {
-    list: () => request.get('artists'),
-    details: (name:string) => request.get(`artists/${name}`)
-}
-const Songs = {
-    getSongs: () => request.get('songs'),
-    getSong: (id:number) => request.get(`songs/${id}`)
-}
 const SignIn = {
     signin:(body:object) => request.post('auth/signup',body),
     mailvalidation:(uuid:string) => request.get(`auth/emailValidation/${uuid}`)
@@ -56,9 +45,7 @@ const SignUp = {
 // oggetto che contiene Catalog
 
 const agent = {
-    Artists,
     SignIn,
-    Songs,
     SignUp
 }
 

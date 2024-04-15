@@ -1,7 +1,25 @@
+import { useState } from "react"
+
 import FooterBottom from "./FooterBottom"
+import agent from "../../utils/agent"
 
 const Footer = () => {
+    const [uuid , setUuid] = useState<string>("")
 
+    const handleClick = () => {
+
+        try {
+            agent.SignIn.mailvalidation(uuid)
+            
+        } catch (error) {
+            console.log(error)
+        }
+        }
+    
+
+    
+
+    
     return (
         <>
         <footer className="footer p-10 bg-base-100 text-base-content">
@@ -25,18 +43,18 @@ const Footer = () => {
     <a className="link link-hover">Privacy policy</a>
     <a className="link link-hover">Cookie policy</a>
   </nav> 
-{/*   <form @submit.prevent="() => {console.log('validated')}">
+ <form >
     <h6 className="footer-title">Valida mail</h6> 
     <fieldset className="form-control w-80">
       <label className="label">
         <span className="label-text">Enter your uuid</span>
       </label> 
       <div className="join">
-        <input type="text" placeholder="uuid" v-model="uuidUser" className="input input-bordered join-item" /> 
-        <button className="btn btn-primary join-item " @click="()=>validationMail()">valida</button>
+        <input type="text" placeholder="uuid" className="input input-bordered join-item" name="uuid" value={uuid} onChange={(e) => setUuid(e.target.value)} /> 
+        <button className="btn btn-primary join-item " onClick={handleClick}>valida</button>
       </div>
     </fieldset>
-  </form> */}
+  </form> 
 </footer>
 
 <FooterBottom/>

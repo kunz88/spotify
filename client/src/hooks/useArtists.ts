@@ -2,11 +2,34 @@ import axios from "axios";
 import ArtistsResult, { ArtistItem } from "../model/artistQuery";
 import { useEffect, useState } from "react";
 
+type RequestOptions = {
+  headers: {
+    "Content-Type": string;
+    Authorization: string;
+  };
+};
+
+
 const useArtist = (artistNames: string[], token: string) => {
   const [artists, setArtists] = useState<ArtistItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [hasError, setIsHasError] = useState(false);
+  
 
+  const loadData = async(requestHeadears:RequestOptions) =>{
+    const artistsResponse =  await Promise.all(
+      artistNames.map(async (artistName) => { // per ogni artista setta il nome e fa la chiamata
+        const response = await axios.get<ArtistsResult>(
+          `https://api.spotify.com/v1/search?q=${artistName}&type=artist`,
+          requestHeadears
+        );
+        return response.data.artists.items[0];
+      })
+    );
+    setIsLoading(false);
+    return artistsResponse
+
+  }
 
   useEffect(() => {
     const requestHeadears = {
@@ -15,33 +38,20 @@ const useArtist = (artistNames: string[], token: string) => {
         Authorization: `Bearer ${token}}   
     `,
       },
-    }
+    };
     try {
+      setIsLoading(true)
+      const artistsResponse = loadData(requestHeadears)
+      artistsResponse.then((results) => setArtists(results));
 
-      setTimeout(() => {
-        const artistsResponse = Promise.all(
-          artistNames.map(async (artistName) => {
-            const response = await axios.get<ArtistsResult>(
-              `https://api.spotify.com/v1/search?q=${artistName}&type=artist`,
-              requestHeadears
-              
-            );
-            return response.data.artists.items[0];
-          })
-        );
-        artistsResponse.then((results) => setArtists(results));
-      }, 2000);
+      
     } catch (error) {
       console.log(error);
       setIsHasError(true);
-    } finally {
-      setIsLoading(false);
     }
   }, []);
 
   return { artists, isLoading, hasError };
 };
-
-
 
 export default useArtist;
