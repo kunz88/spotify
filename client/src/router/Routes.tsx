@@ -5,6 +5,8 @@ import App from "../App";
 import SideList from "../components/SideList/SideList";
 import DetailsComponent from "../components/DetailsPage/DetailsComponent";
 import AuthComponent from "../components/Authentication/AuthComponent/AuthComponent";
+import SignUp from "../components/Authentication/Signup/SignUp";
+import Login from "../components/Authentication/Login/Login";
 
 
 
@@ -35,11 +37,11 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/auth/signup',
-                element: <SideList/>
+                element: <SignUp/>
             },
             {
                 path: '/auth/login',
-                element: <DetailsComponent/>
+                element: <Login/>
             },
 
 

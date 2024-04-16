@@ -2,7 +2,10 @@
 
 type ButtonProps = {
     color:string,
-    name:string
+    name:string,
+    type?:string,
+    text?:string,
+    
 }
 
 const CustomButton = ({color,name}:ButtonProps) => {

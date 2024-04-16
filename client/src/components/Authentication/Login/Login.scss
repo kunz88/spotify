@@ -1,0 +1,11 @@
+@import "../../../scss/includes.scss";
+
+.form-container {
+  @include flex($flex-direction: column);
+
+  gap: rem(8);
+
+  width: rem(300);
+
+  margin-bottom: rem(16);
+}

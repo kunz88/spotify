@@ -24,10 +24,10 @@ const NavBar = () => {
                 <nav>
 
                     <ul className="menu menu-horizontal justify-end">
-                        <li><Link to="auth/login"
+                        <li><Link to="auth/signup"
                         ><CustomButton name="Iscriviti" color="btn-link" /></Link></li>
 
-                        <li><Link to="auth/signup"
+                        <li><Link to="auth/login"
                         ><CustomButton name="Accedi" color="btn" /></Link></li>
                     </ul>
                 </nav>
