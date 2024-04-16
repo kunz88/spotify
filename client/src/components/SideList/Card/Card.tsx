@@ -17,7 +17,7 @@ const Card = ({ title, subTitle, pictureUrl, rounded, id }: props) => {
 
 
   return (
-    <Link to={`/${id}`}>
+    <Link to={`/details/${id}`}>
       <div className="card w-48 h-64  shadow-xl bg-costum">
 
         <figure className="mt-1 relative ">

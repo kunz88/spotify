@@ -1,20 +1,17 @@
 
 import useArtists from "../../hooks/useArtists"
-import useFetch from "../../hooks/useFetch"
+
 import Card from "./Card/Card"
 import CardListSection from "./CardListSection/CardListSection"
 
 
 
 const SideList = () => {
-    const artistsNames = ['eminem', 'taylor swift', 'radiohead', 'metallica', 'madonna']
+    const artistsNames = ['eminem', 'taylor swift', 'radiohead', 'metallica', 'michael jackson']
 
     const token = String(localStorage.getItem("spotifyToken"))
     const { artists, isLoading, hasError } = useArtists(artistsNames, token)
 
-    const ids = artists.map((item) => item.id)
-    const {isFetching,data,error} = useFetch(`https://api.spotify.com/v1/artists/${ids[0]}/top-tracks`,token)
-    console.log(data,isFetching,error) 
 
 
 

@@ -3,6 +3,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import SideList from "../components/SideList/SideList";
+import DetailsComponent from "../components/DetailsPage/DetailsComponent";
+import AuthComponent from "../components/Authentication/AuthComponent/AuthComponent";
 
 
 
@@ -18,9 +20,30 @@ export const router = createBrowserRouter([
                 path: '',
                 element: <SideList/>
             },
+            {
+                path: 'details/:id',
+                element: <DetailsComponent/>
+            },
 
 
 
         ]
     },
-]) // il nostro costruttore del router prende come argomento un array di routes 
+    {
+        path: '/auth',
+        element: <AuthComponent/>,
+        children: [
+            {
+                path: '/auth/signup',
+                element: <SideList/>
+            },
+            {
+                path: '/auth/login',
+                element: <DetailsComponent/>
+            },
+
+
+
+        ]
+    }
+])
