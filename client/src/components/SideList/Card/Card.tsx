@@ -35,7 +35,7 @@ const Card = ({ title, subTitle, pictureUrl, rounded, id }: props) => {
         </figure>
         <div className="card-body p-3">
           <h6 className="card-title text-base font-bold text-white">{title}</h6>
-          <p> raiting {Number(subTitle) / 10}</p>
+          <p className='sub-title font-bold'> {subTitle}</p>
           <div className="card-actions"></div>
         </div>
 

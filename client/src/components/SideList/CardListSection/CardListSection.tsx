@@ -8,9 +8,9 @@ type Props = {
 
 const CardListSection = ({title,children}:PropsWithChildren<Props>) => {
     return (
-    <section className="section-component p-4">
+    <section className="section-component p-4 ">
         <h2 className="section-title font-bold text-white">{ title }</h2>
-        <section className="cards-container">{children}</section>
+        <section className="cards-container flex overflow-x-scroll">{children}</section>
     </section>)
 }
 export default CardListSection
