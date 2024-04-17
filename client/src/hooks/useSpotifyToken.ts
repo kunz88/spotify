@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { CLIENT_ID,CLIENT_SECRET } from "./id";
 
-const CLIENT_ID = "8aa3c4fa0b5541b8abe418f87b9c08cd";
-const CLIENT_SECRET = "6cdddd22938a421c9c537d06e6d60b36";
 const TOKEN_REFRESH_INTERVAL = 3600 * 1000;
 
 type TokenType = {
@@ -45,7 +44,7 @@ const useSpotifyToken = () => {
   }, []);
 
   localStorage.setItem("spotifyToken", accessToken);
-  localStorage.setItem('spotifyTokenTimestamp', Date.now.toString());
+  localStorage.setItem('spotifyTokenTimestamp', Date.now().toString());
 };
 
 export default useSpotifyToken;
