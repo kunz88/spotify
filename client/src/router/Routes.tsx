@@ -7,6 +7,7 @@ import DetailsComponent from "../components/DetailsPage/DetailsComponent";
 import AuthComponent from "../components/Authentication/AuthComponent/AuthComponent";
 import SignUp from "../components/Authentication/Signup/SignUp";
 import Login from "../components/Authentication/Login/Login";
+import SearchComponent from "../components/SearchComponent/SearchComponent";
 
 
 
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path: 'details/:id',
                 element: <DetailsComponent/>
+            },
+            {
+                path: 'search',
+                element: <SearchComponent/>
             },
 
 

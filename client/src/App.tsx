@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom"
-import useSpotifyToken from "./hooks/useSpotifyToken"
 import NavBar from "./components/NavBar/NavBar"
 import Footer from "./components/Footer/Footer"
 import SidebarMenu from "./components/SidebarMenu/SidebarMenu"
@@ -7,10 +6,10 @@ import SideListSection from "./components/SideList/SideListSection/SideListSecti
 
 
 
+
 function App() {
   
-  useSpotifyToken()
-
+  /* useSpotifyToken() */
   return (
     <>
       <section className="flex space-x-4 place-content-between p-2">

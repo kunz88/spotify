@@ -1,16 +1,32 @@
 
 import useArtists from "../../hooks/useArtists"
 
+
+
+
 import Card from "./Card/Card"
 import CardListSection from "./CardListSection/CardListSection"
 
 
 
 const SideList = () => {
-    const artistsNames = ['eminem', 'taylor swift', 'radiohead', 'metallica', 'michael jackson']
 
-    const token = String(localStorage.getItem("spotifyToken"))
-    const { artists, isLoading, hasError } = useArtists(artistsNames, token)
+
+    
+    
+    const token = localStorage.getItem("spotifyToken")
+
+    const artistsPopular = ['eminem', 'taylor swift', 'radiohead', 'greenday', 'dualipa']
+    const artistsRock = ['metallica', 'the cure', 'iron maiden', 'nirvana', 'pearljam']
+    const artistsJazz = ['Louis Armstrong','Duke Ellington','Miles Davis','John Coltrane','Ella Fitzgerald' ];
+    const podcasters = ['Joe Rogan','Tim Ferriss','Sam Harris','Gary Vaynerchuk','Brené Brown'];
+    console.log("render sidelist")
+    
+
+    const { artists: popular, isLoading, hasError } = useArtists(artistsPopular,token)
+    const { artists: rock } = useArtists(artistsRock,token)
+    const { artists: jazz } = useArtists(artistsJazz,token)
+    const { artists: podcast } = useArtists(podcasters,token)
 
 
 
@@ -22,7 +38,7 @@ const SideList = () => {
     if (hasError) {
         return <h1>Error</h1>
     }
-    if (!artists) {
+    if (!popular) {
         return <h1>Artists not found</h1>
     }
     if (isLoading) {
@@ -34,19 +50,25 @@ const SideList = () => {
             <section className="rounded-box">
                 <CardListSection title="Artisti più popolari">
 
-                    {artists.map((artist, index) => <Card key={index} id={artist.id} title={artist.name} subTitle={String(artist.popularity)} pictureUrl={artist.images[0].url} rounded="rounded" />)}
+                    {popular.map((artist, index) => <Card key={index} id={artist.id} title={artist.name} subTitle={String(artist.popularity)} pictureUrl={artist.images[0].url} rounded="rounded" />)}
                 </CardListSection>
             </section>
             <section className="rounded-box">
-                <CardListSection title="Artisti più popolari">
+                <CardListSection title="Artisti più rock">
 
-                    {artists.map((artist, index) => <Card id={artist.id} key={index} title={artist.name} subTitle={String(artist.popularity)} pictureUrl={artist.images[0].url} rounded="rounded-full" />)}
+                    {rock.map((artist, index) => <Card id={artist.id} key={index} title={artist.name} subTitle={String(artist.popularity)} pictureUrl={artist.images[0].url} rounded="rounded-full" />)}
                 </CardListSection>
             </section>
             <section className="rounded-box">
-                <CardListSection title="Artisti più popolari">
+                <CardListSection title="Artisti jazz">
 
-                    {artists.map((artist, index) => <Card id={artist.id} key={index} title={artist.name} subTitle={String(artist.popularity)} pictureUrl={artist.images[0].url} rounded="rounded" />)}
+                    {jazz.map((artist, index) => <Card id={artist.id} key={index} title={artist.name} subTitle={String(artist.popularity)} pictureUrl={artist.images[0].url} rounded="rounded" />)}
+                </CardListSection>
+            </section>
+            <section className="rounded-box">
+                <CardListSection title="Podcast">
+
+                    {podcast.map((artist, index) => <Card id={artist.id} key={index} title={artist.name} subTitle={String(artist.popularity)} pictureUrl={artist.images[0].url} rounded="rounded-full" />)}
                 </CardListSection>
             </section>
         </>

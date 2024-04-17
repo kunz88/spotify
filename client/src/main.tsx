@@ -5,6 +5,7 @@ import { router } from './router/Routes.tsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
+    
 
     <RouterProvider router={router} />
 

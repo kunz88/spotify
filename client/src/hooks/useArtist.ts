@@ -2,7 +2,7 @@ import axios from "axios";
 import ArtistsResult, { ArtistItem } from "../model/artistQuery";
 import { useEffect, useState } from "react";
 
-const useArtist = (artistName: string, token: string) => {
+const useArtist = (artistName: string, token: string | null) => {
   const [artist, setArtist] = useState<ArtistItem>();
   const requestUrl = `https://api.spotify.com/v1/search?q=${artistName}&type=artist`;
 
