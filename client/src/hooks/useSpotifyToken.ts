@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 
-const CLIENT_ID = import.meta.env.CLIENT_ID
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID.trim()
 
-const CLIENT_SECRET = import.meta.env.CLIENT_SECRET
+const CLIENT_SECRET = import.meta.env.VITE_CLIENT_SECRET.trim()
 
 
 
@@ -35,8 +35,8 @@ const useSpotifyToken = () => {
         return;
       }
     }
-
-
+    
+    
     // se non ho il token effettuo la chiamata all'endpoint
     const requestUrl = "https://accounts.spotify.com/api/token";
     const requestBody = `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`;
