@@ -1,5 +1,5 @@
 import useFetch from "../../../hooks/useFetch"
-import { TrackList } from "../model";
+import { TrackList } from "../models/artist";
 import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
 import HearthComponent from "./HearthComponent/HearthComponent";
 
@@ -47,19 +47,14 @@ const SongsList = ({ id, token }: SongsListProps) => {
 
 
 
-        {data?.tracks.map((track) => {
-
-
-
-          return { ...track, isFavorite: false }
-        }).map((track, index) => <tr
+        {data?.tracks.map((track, index) => <tr
           key={index}
-          className="hover:bg-slate-500"
+          className="hover:bg-slate-500 transition ease-in-out"
        
 
         >
           <th>{index + 1}</th>
-          <td><img src={track.album.images[0].url} width="50" height="50"></img></td>
+          <td><img src={track.album.images[2].url}></img></td>
           <td>{track.name}</td>
 
           <td>
@@ -67,7 +62,7 @@ const SongsList = ({ id, token }: SongsListProps) => {
           </td>
           <td>{(track.duration_ms / 100000).toFixed(2)}</td>
           <td>
-            <HearthComponent isFavorite={track.isFavorite}/>
+            <HearthComponent/>
 
           </td>
         </tr>)}

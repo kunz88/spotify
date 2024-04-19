@@ -1,6 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { CLIENT_ID,CLIENT_SECRET } from "./id";
+
+
+const CLIENT_ID = import.meta.env.CLIENT_ID
+
+const CLIENT_SECRET = import.meta.env.CLIENT_SECRET
+
+
+
+
 
 const TOKEN_REFRESH_INTERVAL = 3600 * 1000;
 

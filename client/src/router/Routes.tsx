@@ -3,11 +3,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import SideList from "../components/SideList/SideList";
-import DetailsComponent from "../components/DetailsPage/DetailsComponent";
 import AuthComponent from "../components/Authentication/AuthComponent/AuthComponent";
 import SignUp from "../components/Authentication/Signup/SignUp";
 import Login from "../components/Authentication/Login/Login";
 import SearchComponent from "../components/SearchComponent/SearchComponent";
+import ArtistsDetailsComponent from "../components/DetailsPage/ArtistsDetails/ArtistsDetailsComponent";
+import AlbumsDetailsComponent from "../components/DetailsPage/AlbumsDetails/AlbumsDetailsComponent";
 
 
 
@@ -24,8 +25,12 @@ export const router = createBrowserRouter([
                 element: <SideList/>
             },
             {
-                path: 'details/:id',
-                element: <DetailsComponent/>
+                path: 'details/artists/:id',
+                element: <ArtistsDetailsComponent/>
+            },
+            {
+                path: 'details/albums/:id',
+                element: <AlbumsDetailsComponent/>
             },
             {
                 path: 'search',

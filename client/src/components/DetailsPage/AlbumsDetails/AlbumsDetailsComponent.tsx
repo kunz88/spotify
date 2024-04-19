@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Artist } from "./model";
 import { faPlay } from "@fortawesome/free-solid-svg-icons/faPlay";
-import SongsList from "./SongsList/SongList";
 import { useParams } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../../hooks/useFetch";
+import { Album } from "../models/album";
 
 
 
@@ -11,7 +10,7 @@ import useFetch from "../../hooks/useFetch";
 const DetailsComponent = () => {
   const token = String(localStorage.getItem("spotifyToken"))
   const { id } = useParams();
-  const { isFetching, data, error } = useFetch<Artist>(`https://api.spotify.com/v1/artists/${id}`, token)
+  const { isFetching, data, error } = useFetch<Album>(`https://api.spotify.com/v1/albums/${id}`, token)
   console.log(id)
 
   console.log(data)
@@ -38,16 +37,16 @@ const DetailsComponent = () => {
           </p>
           <h1 className="text-8xl font-bold text-white">{data?.name}</h1>
           <p className="py-6 text-white ">
-            {data.followers.total} ascoltatori mensili
+            {data.release_date}
           </p>
         </div>
       </div>
     </div>
     <div className="flex p-4 gap-4 border-gray-900 border-t-2 border-solid">
-      <button className="btn btn-primary join-item btn-player">
+      <button className="btn btn-primary join-item btn-player animate-bounce">
         <FontAwesomeIcon icon={faPlay} size='lg' />
       </button>
-      <button className="btn btn-outline">Segui</button>
+      <button className="btn btn-outline ">Segui</button>
       <button className="disabled" /* tabIndex=1  */ aria-disabled="true">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +67,7 @@ const DetailsComponent = () => {
     <h2 className="text-2xl font-bold text-white p-4 mb-3">Popolari</h2>
     <div className="overflow-x-auto">
 
-      <SongsList id={id} token={token} />
+     {/*  <SongsList id={id} token={token} /> */}
 
 
     </div>

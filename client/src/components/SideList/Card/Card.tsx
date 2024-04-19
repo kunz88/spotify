@@ -17,8 +17,8 @@ const Card = ({ title, subTitle, pictureUrl, rounded, id }: props) => {
 
 
   return (
-    <Link to={`/details/${id}`}>
-      <div className="card w-48 h-64  shadow-xl bg-costum">
+    <Link to={`/details/artists/${id}`}>
+      <div className="card w-48 h-64  shadow-xl bg-costum transition ease-in-out delay-150">
 
         <figure className="mt-1 relative ">
           <img
@@ -28,7 +28,7 @@ const Card = ({ title, subTitle, pictureUrl, rounded, id }: props) => {
 
           />
           <button
-            className="btn btn-primary join-item absolute bottom-0 right-7 btn-player -z-50"
+            className="btn btn-primary join-item absolute bottom-0 right-7 btn-player -z-50 transition ease-in-out delay-150"
           >
             <FontAwesomeIcon icon={faPlay} size='lg' />
           </button>

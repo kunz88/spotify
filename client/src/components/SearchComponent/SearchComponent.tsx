@@ -95,7 +95,7 @@ const SearchComponent = () => {
 
                 {isLoading && <Scheleton />}
 
-                {albumList && albumList.items.map((albumItem, index) => <SearchCard key={index} title={albumItem.name} subtitle={albumItem.release_date} imageUrl={albumItem.images[0].url} />)
+                {albumList && albumList.items.map((albumItem, index) => <SearchCard key={index} id={albumItem.id} title={albumItem.name} subtitle={albumItem.release_date} imageUrl={albumItem.images[0].url} />)
                 }
 
             </section>
