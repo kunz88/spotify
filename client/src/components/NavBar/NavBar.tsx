@@ -6,7 +6,7 @@ const NavBar = () => {
     return (
         <>
             <div
-                className="bg-base-100 h-16 z-50 nav-custom sticky top-0 right-0 nav-costum"
+                className="bg-base-100 h-16 z-50 sticky top-0 right-0 nav-costum"
             >
                 <nav>
                     <button className="join-item btn">«</button>

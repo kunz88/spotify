@@ -4,6 +4,7 @@ import Footer from "./components/Footer/Footer"
 import SidebarMenu from "./components/SidebarMenu/SidebarMenu"
 import SideListSection from "./components/SideList/SideListSection/SideListSection"
 import useSpotifyToken from "./hooks/useSpotifyToken"
+import PlayerComponent from "./components/PlayerComponent/PlayerComponent"
 
 
 
@@ -22,6 +23,7 @@ function App() {
 
           <NavBar />
           <Outlet />
+          <PlayerComponent/>
           <Footer />
         </SideListSection>
 

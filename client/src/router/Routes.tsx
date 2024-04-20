@@ -9,7 +9,6 @@ import Login from "../components/Authentication/Login/Login";
 import SearchComponent from "../components/SearchComponent/SearchComponent";
 import ArtistsDetailsComponent from "../components/DetailsPage/ArtistsDetails/ArtistsDetailsComponent";
 import AlbumsDetailsComponent from "../components/DetailsPage/AlbumsDetails/AlbumsDetailsComponent";
-import PlayerComponent from "../components/PlayerComponent/PlayerComponent";
 
 
 
@@ -19,7 +18,7 @@ import PlayerComponent from "../components/PlayerComponent/PlayerComponent";
 export const router = createBrowserRouter([
     {
         path: '/', // possiamo avere route innestate
-        element: <PlayerComponent/>,
+        element: <App/>,
         children: [
             {
                 path: '',

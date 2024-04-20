@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Artist } from "../models/artist";
 import { faPlay } from "@fortawesome/free-solid-svg-icons/faPlay";
 import SongsList from "../SongsList/SongList";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
 
 
@@ -44,9 +44,9 @@ const DetailsComponent = () => {
       </div>
     </div>
     <div className="flex p-4 gap-4 border-gray-900 border-t-2 border-solid">
-      <button className="btn btn-primary join-item btn-player animate-bounce">
+      <Link to="/player" className="btn btn-primary join-item btn-player animate-bounce">
         <FontAwesomeIcon icon={faPlay} size='lg' />
-      </button>
+      </Link>
       <button className="btn btn-outline ">Segui</button>
       <button className="disabled" /* tabIndex=1  */ aria-disabled="true">
         <svg
