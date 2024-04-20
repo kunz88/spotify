@@ -6,7 +6,10 @@ import { faBackwardStep, faForwardStep, faPause, faPlay, faVolumeLow } from '@fo
 declare global {
     interface Window {
         onSpotifyWebPlaybackSDKReady: () => void;
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Spotify: any;
+        // non sono riuscito a tipizzare l'oggetto Spotify 
     }
 }
 
@@ -19,7 +22,7 @@ const PlayerComponent = () => {
 
 
 
-
+    // memoizzo l'oggetto così da non triggerare chiamate alle future renderizzazioni 
     useMemo(() => {
         const script = document.createElement("script");
         script.src = "https://sdk.scdn.co/spotify-player.js";
@@ -30,7 +33,7 @@ const PlayerComponent = () => {
         window.onSpotifyWebPlaybackSDKReady = () => {
             const player = new window.Spotify.Player({
                 name: 'React final test',
-                getOAuthToken: (cb: (token: string) => void) => { cb("BQCBxKtpSRitG_h5VF_NP8q6Kdx0oLqlKG6sKbFVPCnusc4pvFeDGIeXzZdZ_vBhiDoOi7lQktYFKFY03WdF5UTXY7rvxPSJEpfDzCZJE7D0hpRlecaktndHT0m_3sOPhkVP81WsOl66i-prxhegKlY6bbiZMIuKPoKzWcSNERIQvQQMLXPTKNH47K5dECzy7EeqryCBeF0_XSXtwRZuvcwLM-RW"); },
+                getOAuthToken: (cb: (token: string) => void) => { cb(String(localStorage.getItem("spotifyToken"))); },
                 volume: 0.5
             });
             setSpotifyPlayer(player);
@@ -98,8 +101,8 @@ const PlayerComponent = () => {
                         <FontAwesomeIcon icon={faForwardStep} size='lg' />
                     </button>
                     <div className="flex gap-2 items-center">
-                        <FontAwesomeIcon icon={faVolumeLow} size='sm' />
-                        <progress className="progress progress-success w-40" value="45" max="100"></progress></div>
+                        <FontAwesomeIcon icon={faVolumeLow} size='sm'/>
+                        <input type="range" min={0} max="100" value={spotifyPlayer.volume} className="range range-xs h-1.5"/></div>
 
 
 
