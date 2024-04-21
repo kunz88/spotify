@@ -46,10 +46,10 @@ const SongsList = ({ id, token }: SongsListProps) => {
       <tbody>
 
 
-
+        
         {data?.tracks.map((track, index) => <tr
           key={index}
-          className="hover:bg-slate-500 transition ease-in-out"
+          className="hover:bg-slate-800 transition ease-in-out"
        
 
         >
