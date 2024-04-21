@@ -6,7 +6,8 @@ import SideListSection from "./components/SideList/SideListSection/SideListSecti
 /* import useSpotifyToken from "./hooks/useSpotifyToken" */
 import PlayerComponent from "./components/PlayerComponent/PlayerComponent"
 import useSpotifySDKtoken from "./hooks/useSpotifySDKtoken"
-import LoginSDK from "./components/Authentication/Login/LoginSDK"
+import useSpotifyToken from "./hooks/useSpotifyToken"
+
 
 
 
@@ -15,11 +16,14 @@ function App() {
 
   useSpotifySDKtoken()
   const token = localStorage.getItem("spotifyToken")
+  useSpotifyToken()
+  const tokenTemp = localStorage.getItem("spotifyTemporaryToken")
+
   console.log(token)
+  console.log(tokenTemp)
 
   return (
-    <> {!token ? <LoginSDK/> :
-    
+    <>
     <section className="flex space-x-4 place-content-between p-2">
       <section>
         <SidebarMenu />
@@ -28,12 +32,12 @@ function App() {
       <SideListSection>
         <NavBar />
         <Outlet />
-        <PlayerComponent />
+        {token && <PlayerComponent />}
         <Footer />
       </SideListSection>
 
 
-    </section>}
+    </section>
 
 
     </>

@@ -9,7 +9,7 @@ import useFetch from "../../../hooks/useFetch";
 
 
 const DetailsComponent = () => {
-  const token = String(localStorage.getItem("spotifyToken"))
+  const token = String(localStorage.getItem("spotifyTemporaryToken"))
   const { id } = useParams();
   const { isFetching, data, error } = useFetch<Artist>(`https://api.spotify.com/v1/artists/${id}`, token)
   console.log(id)

@@ -10,10 +10,6 @@ import Scheleton from "../commons/LoadingComponent/Scheleton"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
-
-
-
-
 const SearchComponent = () => {
     const [searchInput, setSearchInput] = useState<string>("")
     const [albumList, setAlbumList] = useState<AlbumType | null>(null)
@@ -25,14 +21,9 @@ const SearchComponent = () => {
             setSearchInput(event.target.value)
         }
     }
-
-
-
-    
-
     useEffect(() => { 
 
-        const token = localStorage.getItem("spotifyToken")
+        const token = localStorage.getItem("spotifyTemporaryToken")
 
         if(!token){
             setHasError(true)
@@ -95,7 +86,7 @@ const SearchComponent = () => {
             <div className="relative container flex justify-center p-2">
                 <div className="relative w-55">
                 <FontAwesomeIcon className="absolute end-3 top-4" icon={faMagnifyingGlass} />
-                <input type="text" placeholder="      Cerca un artista.."
+                <input type="text" placeholder="Cerca un artista.."
                     className="input input-bordered join-item w-full max-w-xs"
                     onChange={debouncedOnChange}
                 />

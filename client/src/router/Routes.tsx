@@ -9,6 +9,7 @@ import Login from "../components/Authentication/Login/Login";
 import SearchComponent from "../components/SearchComponent/SearchComponent";
 import ArtistsDetailsComponent from "../components/DetailsPage/ArtistsDetails/ArtistsDetailsComponent";
 import AlbumsDetailsComponent from "../components/DetailsPage/AlbumsDetails/AlbumsDetailsComponent";
+import LandingPage from "../components/LandingPage/LandingPage";
 
 
 
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
         element: <AuthComponent/>,
         children: [
             {
+                path:'/auth/getToken',
+                element:<LandingPage/>
+            },
+            {
                 path: '/auth/signup',
                 element: <SignUp/>
             },
@@ -53,8 +58,6 @@ export const router = createBrowserRouter([
                 path: '/auth/login',
                 element: <Login/>
             },
-
-
 
         ]
     }

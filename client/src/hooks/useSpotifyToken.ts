@@ -23,8 +23,8 @@ const useSpotifyToken = () => {
 
   useEffect(() => {
     // Controlla se c'è un token già salvato
-    const storedToken = localStorage.getItem("spotifyToken");
-    const tokenTimestamp = localStorage.getItem("spotifyTokenTimestamp");
+    const storedToken = localStorage.getItem("spotifyTemporaryToken");
+    const tokenTimestamp = localStorage.getItem("spotifyTemporaryTokenTimestamp");
     const now = Date.now();
 
     if (storedToken && tokenTimestamp) {
@@ -51,8 +51,8 @@ const useSpotifyToken = () => {
       .catch((e) => console.log('Errore durante la richiesta del token di accesso a Spotify:', e));
   }, []);
 
-  localStorage.setItem("spotifyToken", accessToken);
-  localStorage.setItem('spotifyTokenTimestamp', Date.now().toString());
+  localStorage.setItem("spotifyTemporaryToken", accessToken);
+  localStorage.setItem('spotifyTemporaryTokenTimestamp', Date.now().toString());
 };
 
 export default useSpotifyToken;

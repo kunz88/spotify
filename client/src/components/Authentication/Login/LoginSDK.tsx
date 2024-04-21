@@ -2,7 +2,7 @@
 
 function LoginSDK() {
     return (
-        <div className="App">
+        <div >
             <header className="App-header">
                 <a className="btn-spotify" href="http://localhost:3000/auth/login" >
                     Login with Spotify 

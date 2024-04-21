@@ -48,6 +48,7 @@ const SignUp = () => {
             console.log(err)
 
         }
+
         Object.keys(user).forEach((inputName: string) => (user[inputName as UserKey] = ""));
 
 
@@ -58,9 +59,7 @@ const SignUp = () => {
 
         <FormSection>
             <form className="form-container self-center" onSubmit={handleSubmit}>
-
                 <h1 className="text-4xl leading-10 font-bold text-white mt-8 mb-8 ml-3.5">Iscriviti per iniziare ad ascoltare</h1>
-
                 <label className="input input-bordered flex items-center gap-4 w-full max-w-xs" >
                     Name
                     <input
@@ -70,7 +69,6 @@ const SignUp = () => {
                         className="grow"
                         placeholder="Kunz"
                         required
-
                         onChange={handleInputChange}
                     />
                 </label>
@@ -108,11 +106,8 @@ const SignUp = () => {
                         required
                     />
                 </label>
-
                 <CustomButton type="submit" text="Submit" name="Submit" color="btn-primary" />
-
                 <div className="divider">oppure</div>
-
                 <button className="btn btn-outline">
                     Accedi con Facebook
                     <svg

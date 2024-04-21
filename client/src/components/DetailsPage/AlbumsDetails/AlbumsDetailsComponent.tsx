@@ -7,8 +7,12 @@ import { Album } from "../models/album";
 
 
 
+
 const DetailsComponent = () => {
-  const token = String(localStorage.getItem("spotifyToken"))
+
+  const token = String(localStorage.getItem("spotifyTemporaryToken"))
+
+
   const { id } = useParams();
   const { isFetching, data, error } = useFetch<Album>(`https://api.spotify.com/v1/albums/${id}`, token)
   console.log(id)
@@ -36,9 +40,13 @@ const DetailsComponent = () => {
             />Artista verificato
           </p>
           <h1 className="text-8xl font-bold text-white">{data?.name}</h1>
-          <p className="py-6 text-white ">
-            {data.release_date}
+          <h3 className="p-2 text-3xl font-bold">{data.artists[0].name}</h3>
+          <p className="p-2  font-bold">
+            Data rilascio {data.release_date}
           </p>
+          <p className=" p-2  font-bold">Numero tracce {data.total_tracks}</p>
+
+          
         </div>
       </div>
     </div>
@@ -64,7 +72,6 @@ const DetailsComponent = () => {
         </svg>
       </button>
     </div>
-    <h2 className="text-2xl font-bold text-white p-4 mb-3">Popolari</h2>
     <div className="overflow-x-auto">
 
      {/*  <SongsList id={id} token={token} /> */}
