@@ -43,8 +43,6 @@ const SearchComponent = () => {
                 },
             };
 
-            
-
             try {
 
                 setTimeout(async () => {

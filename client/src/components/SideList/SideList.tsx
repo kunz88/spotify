@@ -15,11 +15,9 @@ const SideList = () => {
 
     
     
-    const token = localStorage.getItem("spotifyToken")
+    const token = localStorage.getItem("spotifyTemporaryToken")
 
     const artistsMock = ['eminem', 'taylor swift', 'radiohead', 'greenday', 'dualipa','metallica', 'the cure', 'iron maiden', 'nirvana', 'pearljam','Louis Armstrong','Duke Ellington','Miles Davis','John Coltrane','Ella Fitzgerald' ,'Joe Rogan','Tim Ferriss','Sam Harris','Gary Vaynerchuk','Brené Brown']
-
-    console.log("render sidelist")
     
 
     const { artists, isLoading, hasError } = useArtists(artistsMock,token)

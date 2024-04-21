@@ -6,6 +6,7 @@ const usePlayback = (deviceId: string, token: string | null) => {
   
 
   useEffect(() => {
+    
     const requestUrl = `https://api.spotify.com/v1/me/player`;
     const requestHeadears = {
       headers: {

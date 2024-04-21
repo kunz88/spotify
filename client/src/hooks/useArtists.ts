@@ -14,10 +14,11 @@ const useArtists = (artistNames: string[],token:string | null) => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setIsHasError] = useState(false);
 
-
-
   
   useEffect(() => {
+
+
+    // funzione per fetchare tutta la lista degli artisti dalle API di spotify
     const loadData = async (requestHeadears: RequestOptions) => {
     
       const artistsResponse = await Promise.all(

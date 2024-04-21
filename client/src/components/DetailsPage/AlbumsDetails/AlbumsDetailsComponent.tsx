@@ -15,9 +15,7 @@ const DetailsComponent = () => {
 
   const { id } = useParams();
   const { isFetching, data, error } = useFetch<Album>(`https://api.spotify.com/v1/albums/${id}`, token)
-  console.log(id)
 
-  console.log(data)
 
   if (isFetching) {
     return <div className="h-screen min-w-full loading-lg h-screen min-w-full flex justify-center"><span className="loading loading-dots w-10"></span></div>
@@ -74,7 +72,6 @@ const DetailsComponent = () => {
     </div>
     <div className="overflow-x-auto">
 
-     {/*  <SongsList id={id} token={token} /> */}
 
 
     </div>

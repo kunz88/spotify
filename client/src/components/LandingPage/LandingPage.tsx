@@ -1,6 +1,5 @@
 
 import FormSection from "../Authentication/FormSection/FormSection"
-import NavBarBase from "../NavBar/NavBarBase"
 
 const LandingPage = () => {
 
@@ -11,7 +10,6 @@ const LandingPage = () => {
     return (
 
         <FormSection>
-            <NavBarBase />
             <header>
                 <div className="hero h-full bg-gradient-to-r from-green-500 gray-900">
                     <div className="hero-content flex-col  justify-self-start">
@@ -23,8 +21,7 @@ const LandingPage = () => {
                         <h1 className="text-8xl font-bold text-white mb-4">
                             Visita Spotify
                         </h1>
-
-                        <a className="btn-link font-bold text-2xl" href="http://localhost:3000/auth/login" >
+                        <a className="btn " href="http://localhost:3000/auth/login" >
                             Login with Spotify
                         </a>
                     </div>

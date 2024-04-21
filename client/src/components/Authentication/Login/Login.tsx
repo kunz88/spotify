@@ -1,13 +1,63 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import CustomButton from "../../CustomButton/CustomButton"
 import FormSection from "../FormSection/FormSection"
 import "./Login.scss"
+import { ChangeEvent, FormEvent, useState } from "react"
+import { UserType } from "../model/user"
+import agent from "../../../utils/agent"
 
 const Login = () => {
 
-    return (
-        <FormSection>
-        <form className="form-container self-center">
+
+  //TODO fare un hook unico per l'autenticazione
+  const navigate = useNavigate();
+  const [status, setStatus] = useState('typing');
+  const [user, setUser] = useState<UserType>({
+    email: "",
+    password: "",
+  })
+
+
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => { // tipo ufficiale dell'evento onChange dell'input type
+    const { name, value } = event.target
+    setUser({
+      ...user,
+      [name]: value,// per ogni chiave inserisco un valore in base al name dell'input
+    })
+    console.log(user)
+
+  }
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    setStatus('submitting');
+
+    try {
+      setTimeout(async () => {
+        console.log(user)
+        const userData:UserType & {token:string} = await agent.SignUp.signup(user)
+        console.log(userData) // da utilizzare in uno stato globale con redux
+        localStorage.setItem("userToken",userData.token)
+        navigate("/auth/getToken");
+      }, 1000)
+
+      setStatus('success');
+    } catch (err) {
+      setStatus('typing');
+      console.log(err)
+    } finally {
+
+      console.log("submit")
+
+    }
+  }
+
+  return (
+    status === "submitting" ? <div className="loading-lg h-screen min-w-full flex justify-center"><span className="loading loading-dots w-10"></span></div> :
+
+      <FormSection>
+        <form className="form-container self-center" onSubmit={handleSubmit}>
           <h1 className="text-4xl leading-10 font-bold text-white mb-8 text-center">
             Accedi a Spotify
           </h1>
@@ -39,37 +89,40 @@ const Login = () => {
               ></path>
             </svg>
           </button>
-    
           <div className="divider"></div>
           <label
             className="input input-bordered input-primary flex items-center gap-4 w-full max-w-xs"
           >
             Email
             <input
+              name="email"
               type="text"
               className="grow"
               placeholder="kunz@site.com"
               required
-              v-model="user.email"
+              value={user.email}
+              onChange={handleInputChange}
             />
           </label>
           <label
             className="input input-bordered flex items-center gap-4 w-full max-w-xs"
           >
             <input
+              name="password"
               type="password"
               className="grow"
               placeholder="password"
-              v-model="user.password"
+              value={user.password}
+              onChange={handleInputChange}
               required
             />
           </label>
-          <div className="flex p-5 items-center"> <p>Non hai un account?</p><Link to="/auth/signup" 
-              ><CustomButton name="Iscriviti" color="btn-link"/>
-            </Link></div>
-    
-    
-    
+          <div className="flex p-5 items-center"> <p>Non hai un account?</p><Link to="/auth/signup"
+          ><CustomButton name="Iscriviti" color="btn-link" />
+          </Link></div>
+
+
+
           <CustomButton
             type="submit"
             text="Submit"
@@ -79,6 +132,6 @@ const Login = () => {
         </form>
       </FormSection>
 
-    )
+  )
 }
 export default Login

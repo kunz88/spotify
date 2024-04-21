@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 
 
 export const useFetch = <T>(url: string,token:string) => {
+  
   const [isFetching,setIsFetching] = useState(true);
   const [data,setData] = useState<T>();
   const [error,setError] = useState(false);
   
+
 useEffect(()=>{
     setTimeout(() => {
         fetch(url,{
