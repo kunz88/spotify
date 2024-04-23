@@ -1,13 +1,13 @@
 import axios, { AxiosResponse } from "axios";
 
-// TUILIZIAMO UN AGENT PER CENTRALIZZARE TUTTE LE NOSTRE CHIAMATE ALLE API
+// UILIZIAMO UN AGENT PER CENTRALIZZARE TUTTE LE NOSTRE CHIAMATE ALLE API
 // EVITANDO RIDONDANZA DEL CODICE
 
 // opzione per l'url base per tutte le chiamate di axios
 axios.defaults.baseURL = 'http://localhost:3000';
 
 // opzione per ricezione di cookies
-/* axios.defaults.withCredentials = true; da sistemare , da problemi con le api di spotify*/ 
+/*  axios.defaults.withCredentials = true;  */
 
 // funzione per simulare un ritardo nel loading delle pagine
 const sleep = () => new Promise(resolve => setTimeout(resolve , 2000));
@@ -39,7 +39,6 @@ const SignIn = {
 }
 const SignUp = {
     signup:(body:object) => request.post('auth/login',body),
-
 }
 
  

@@ -2,14 +2,24 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
 
-const HearthComponent = () => {
+
+
+type HearthComponentProps = {
+    handlerOnclick:() => void
+}
+const HearthComponent = ({handlerOnclick}:HearthComponentProps) => {
 
         const [isFavorite,setIsFavorite] = useState(false)
 
            return (
             <>
             
-            <button onClick={()=>{setIsFavorite(!isFavorite)}}>
+            <button onClick={()=>{
+                setIsFavorite(!isFavorite)
+                handlerOnclick()
+
+                
+                }}>
                 {!isFavorite && <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"

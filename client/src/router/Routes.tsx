@@ -14,6 +14,7 @@ import LandingPage from "../components/LandingPage/LandingPage";
 
 
 
+
 // CREAIAMO UN ROUTER CON TUTTE LE ROTTE DA INSTRADARE
 
 export const router = createBrowserRouter([
@@ -36,10 +37,7 @@ export const router = createBrowserRouter([
             {
                 path: 'search',
                 element: <SearchComponent/>
-            },
-
-
-
+            }
         ]
     },
     {
@@ -60,5 +58,5 @@ export const router = createBrowserRouter([
             },
 
         ]
-    }
+    },
 ])

@@ -11,6 +11,7 @@ import { setUserState } from "../../../SliceContext/userSlice"
 const Login = () => {
 
   const dispach = useDispatch()
+
   //TODO fare un hook unico per l'autenticazione
   const navigate = useNavigate();
   const [status, setStatus] = useState('typing');
@@ -34,15 +35,15 @@ const Login = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     setStatus('submitting');
-
     try {
       setTimeout(async () => {
         console.log(user)
         const userData:UserResponse = await agent.SignUp.signup(user)
         console.log(userData) // da utilizzare in uno stato globale con redux
         dispach(setUserState(userData.user))
+        alert(`ciao ${userData.user.name}`)
         localStorage.setItem("userToken",userData.token)
-        navigate("/auth/getToken");
+        navigate("/");
       }, 1000)
 
       setStatus('success');
@@ -50,9 +51,7 @@ const Login = () => {
       setStatus('typing');
       console.log(err)
     } finally {
-
       console.log("submit")
-
     }
   }
 

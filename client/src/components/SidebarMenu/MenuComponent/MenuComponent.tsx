@@ -8,12 +8,12 @@ const MenuComponent = () => {
         <>
           <ul className="menu bg-base-100  rounded-box text-lg">
     <li>
-      <a className="btn btn-ghost font-bold text-white justify-start"
+      <Link to="/auth/getToken" className="btn btn-ghost font-bold text-white justify-start"
         ><img
           src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_White.png"
           alt="Spotify"
           className="w-20"
-      /></a>
+      /></Link>
     </li>
     <li>
       <Link to="/">

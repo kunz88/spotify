@@ -103,9 +103,6 @@ const PlayerComponent = () => {
                     <div className="flex gap-2 items-center">
                         <FontAwesomeIcon icon={faVolumeLow} size='sm'/>
                         <input type="range" min={0} max="100" value={spotifyPlayer.volume} className="range range-xs h-1.5"/></div>
-
-
-
                 </div>
 
             </div>

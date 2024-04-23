@@ -9,6 +9,7 @@ export const loginSlice = createSlice({
     toggleIsLogged: (state) => {
       localStorage.removeItem("userToken")
       localStorage.removeItem("spotifyToken")
+      localStorage.removeItem("spotifyTokenTimestamp")
       state.value = false;
       alert("sloggato spotify")
       location.reload()

@@ -1,12 +1,10 @@
 
+import { useNavigate } from "react-router-dom";
 import FormSection from "../Authentication/FormSection/FormSection"
 
 const LandingPage = () => {
-
+    const navigate = useNavigate()
         
-   
-
-
     return (
 
         <FormSection>
@@ -21,7 +19,7 @@ const LandingPage = () => {
                         <h1 className="text-8xl font-bold text-white mb-4">
                             Visita Spotify
                         </h1>
-                        <a className="btn " href="http://localhost:3000/auth/login" >
+                        <a className="btn" href="http://localhost:3000/auth/login" onClick={() => {navigate("/");}}>
                             Login with Spotify
                         </a>
                     </div>

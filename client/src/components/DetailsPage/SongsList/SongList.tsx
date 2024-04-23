@@ -2,6 +2,8 @@ import useFetch from "../../../hooks/useFetch"
 import { TrackList } from "../models/artist";
 import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
 import HearthComponent from "./HearthComponent/HearthComponent";
+import { useDispatch } from "react-redux";
+import { addSong } from "../../../SliceContext/playlistSlice";
 
 
 type SongsListProps = {
@@ -11,6 +13,8 @@ type SongsListProps = {
 
 const SongsList = ({ id, token }: SongsListProps) => {
 
+
+  const dispatch = useDispatch()
 
 
 
@@ -50,6 +54,8 @@ const SongsList = ({ id, token }: SongsListProps) => {
         {data?.tracks.map((track, index) => <tr
           key={index}
           className="hover:bg-slate-800 transition ease-in-out"
+          //funzione di dispatch che permette di inserire una canzone nella lista dei favoriti
+          
        
 
         >
@@ -62,7 +68,8 @@ const SongsList = ({ id, token }: SongsListProps) => {
           </td>
           <td>{(track.duration_ms / 100000).toFixed(2)}</td>
           <td>
-            <HearthComponent/>
+          
+            <HearthComponent  handlerOnclick={()=>{dispatch(addSong(track.name))}}/>
 
           </td>
         </tr>)}

@@ -31,7 +31,6 @@ const useSpotifySDKtoken = () => {
       }
 
     }
-
     getToken();
   }, []);
   localStorage.setItem("spotifyToken", token);
