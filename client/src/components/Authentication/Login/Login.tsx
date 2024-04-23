@@ -3,12 +3,14 @@ import CustomButton from "../../CustomButton/CustomButton"
 import FormSection from "../FormSection/FormSection"
 import "./Login.scss"
 import { ChangeEvent, FormEvent, useState } from "react"
-import { UserType } from "../model/user"
+import { UserResponse, UserType } from "../model/user"
 import agent from "../../../utils/agent"
+import { useDispatch } from "react-redux"
+import { setUserState } from "../../../SliceContext/userSlice"
 
 const Login = () => {
 
-
+  const dispach = useDispatch()
   //TODO fare un hook unico per l'autenticazione
   const navigate = useNavigate();
   const [status, setStatus] = useState('typing');
@@ -36,8 +38,9 @@ const Login = () => {
     try {
       setTimeout(async () => {
         console.log(user)
-        const userData:UserType & {token:string} = await agent.SignUp.signup(user)
+        const userData:UserResponse = await agent.SignUp.signup(user)
         console.log(userData) // da utilizzare in uno stato globale con redux
+        dispach(setUserState(userData.user))
         localStorage.setItem("userToken",userData.token)
         navigate("/auth/getToken");
       }, 1000)
@@ -57,7 +60,7 @@ const Login = () => {
     status === "submitting" ? <div className="loading-lg h-screen min-w-full flex justify-center"><span className="loading loading-dots w-10"></span></div> :
 
       <FormSection>
-        <form className="form-container self-center" onSubmit={handleSubmit}>
+        <form className="form-container self-center" onSubmit={handleSubmit} id="login">
           <h1 className="text-4xl leading-10 font-bold text-white mb-8 text-center">
             Accedi a Spotify
           </h1>
@@ -92,6 +95,7 @@ const Login = () => {
           <div className="divider"></div>
           <label
             className="input input-bordered input-primary flex items-center gap-4 w-full max-w-xs"
+            id="email"
           >
             Email
             <input
@@ -106,6 +110,7 @@ const Login = () => {
           </label>
           <label
             className="input input-bordered flex items-center gap-4 w-full max-w-xs"
+            id="password"
           >
             <input
               name="password"

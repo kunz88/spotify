@@ -20,9 +20,16 @@ const useSpotifySDKtoken = () => {
     }
 
     async function getToken() {
-      const response = await fetch("http://localhost:3000/auth/token");
-      const json = await response.json();
-      setToken(json.spotifyToken);
+
+      try{
+        const response = await fetch("http://localhost:3000/auth/token");
+        const json = await response.json();
+        setToken(json.spotifyToken);
+
+      }catch(error){
+        console.log(error)
+      }
+
     }
 
     getToken();

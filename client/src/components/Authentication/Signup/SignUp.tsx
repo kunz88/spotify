@@ -57,9 +57,9 @@ const SignUp = () => {
         status === "submitting" ? <div className="loading-lg h-screen min-w-full flex justify-center"><span className="loading loading-dots w-10"></span></div> :
 
             <FormSection>
-                <form className="form-container self-center" onSubmit={handleSubmit}>
+                <form className="form-container self-center" onSubmit={handleSubmit} id="signup">
                     <h1 className="text-4xl leading-10 font-bold text-white mt-8 mb-8 ml-3.5">Iscriviti per iniziare ad ascoltare</h1>
-                    <label className="input input-bordered flex items-center gap-4 w-full max-w-xs" >
+                    <label className="input input-bordered flex items-center gap-4 w-full max-w-xs" id="name">
                         Name
                         <input
                             name="name"
@@ -71,7 +71,7 @@ const SignUp = () => {
                             onChange={handleInputChange}
                         />
                     </label>
-                    <label className="input input-bordered input-primary flex items-center gap-4 w-full max-w-xs" >
+                    <label className="input input-bordered input-primary flex items-center gap-4 w-full max-w-xs" id="email">
                         Email
                         <input
                             name="email"
@@ -83,7 +83,7 @@ const SignUp = () => {
                             onChange={handleInputChange}
                         />
                     </label>
-                    <label className="input input-bordered flex items-center gap-4 w-full max-w-xs">
+                    <label className="input input-bordered flex items-center gap-4 w-full max-w-xs" id="avatar">
                         <input
                             name="avatar"
                             value={user.avatar}
@@ -94,7 +94,7 @@ const SignUp = () => {
                         />
                         <span className="badge badge-info mr-1">Optional</span>
                     </label>
-                    <label className="input input-bordered flex items-center gap-4 w-full max-w-xs">
+                    <label className="input input-bordered flex items-center gap-4 w-full max-w-xs" id="password">
                         <input
                             name="password"
                             value={user.password}
